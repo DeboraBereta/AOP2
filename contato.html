@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu blog</title>
+    <link rel="stylesheet" href="estilos/styleContato.css">
+
+</head>
+
+<body>
+    <nav class="container">
+        <div class="navbar">
+            <a href="index.html">
+                <img src="img/logo.png" class="logo">
+            </a>
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="trabalho.html">ARTISTAS</a></li>
+                <li><a href="playlist.html">PLAYLIST</a></li>
+                <li><a href="sobre.html">SOBRE MIM</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="bouncing-blobs-container">
+            <div class="bouncing-blobs-glass"></div>
+            <div class="bouncing-blobs">
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--white"></div>
+                <div class="bouncing-blob bouncing-blob--purple"></div>
+                <div class="bouncing-blob bouncing-blob--purple"></div>
+                <div class="bouncing-blob bouncing-blob--pink"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container2">
+        <h1>Entre em Contato</h1>
+        <form id="contactForm" method="post" novalidate>
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" name="nome" required><br>
+            <label for="email">E-mail:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="mensagem">Mensagem:</label><br>
+            <textarea id="mensagem" name="mensagem" required></textarea><br>
+            <input class="btn-enviar" type="submit" value="Enviar" onclick="enviarEmail(); return false;">
+        </form>
+
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+    <div class="social-buttons">
+        <a href="https://api.whatsapp.com/send?phone=27999593880" target="_blank">WhatsApp</a>
+        <a href="https://www.linkedin.com/in/d%C3%A9bora-bereta-francisco-8a7506229/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/DeboraBereta" target="_blank">GitHub</a>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Meu blog. Todos os direitos reservados.<br> Desenvolvido por Débora Bereta</p>
+    </footer>
+
+    <script>
+        function enviarEmail() {
+            document.getElementById("contactForm").reset();
+            var modal = document.getElementById("modal");
+            var modalMessage = document.getElementById("modal-message");
+            modal.style.display = "block";
+            modalMessage.textContent = "E-mail enviado com sucesso!";
+            setTimeout(function () {
+                modal.style.display = "none";
+            }, 3000);
+            return false;
+        }
+
+        function fecharModal() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+
+        // Adicionando evento de clique ao botão de fechar
+        document.querySelector(".close").addEventListener("click", fecharModal);
+
+        // Adicionando evento de clique para fechar o modal quando o usuário clicar fora da mensagem
+        document.getElementById("modal").addEventListener("click", function (event) {
+            if (event.target === this) {
+                fecharModal();
+            }
+        });
+
+        /*-------------- EFEITO DO FUNDO ------------------------*/
+        const MIN_SPEED = 1.5;
+        const MAX_SPEED = 2.5;
+
+        function randomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        class Blob {
+            constructor(el) {
+                this.el = el;
+                const boundingRect = this.el.getBoundingClientRect();
+                this.size = boundingRect.width;
+                this.initialX = randomNumber(0, window.innerWidth - this.size);
+                this.initialY = randomNumber(0, window.innerHeight - this.size);
+                this.el.style.top = `${this.initialY}px`;
+                this.el.style.left = `${this.initialX}px`;
+                this.vx = randomNumber(MIN_SPEED, MAX_SPEED) * (Math.random() > 0.5 ? 1 : -1);
+                this.vy = randomNumber(MIN_SPEED, MAX_SPEED) * (Math.random() > 0.5 ? 1 : -1);
+                this.x = this.initialX;
+                this.y = this.initialY;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x >= window.innerWidth - this.size) {
+                    this.x = window.innerWidth - this.size;
+                    this.vx *= -1;
+                }
+                if (this.y >= window.innerHeight - this.size) {
+                    this.y = window.innerHeight - this.size;
+                    this.vy *= -1;
+                }
+                if (this.x <= 0) {
+                    this.x = 0;
+                    this.vx *= -1;
+                }
+                if (this.y <= 0) {
+                    this.y = 0;
+                    this.vy *= -1;
+                }
+            }
+
+            move() {
+                this.el.style.transform = `translate(${this.x - this.initialX}px, ${this.y - this.initialY}px)`;
+            }
+        }
+
+        function initBlobs() {
+            const blobEls = document.querySelectorAll('.bouncing-blob');
+            const blobs = Array.from(blobEls).map((blobEl) => new Blob(blobEl));
+
+            function update() {
+                requestAnimationFrame(update);
+                blobs.forEach((blob) => {
+                    blob.update();
+                    blob.move();
+                });
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        initBlobs();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu blog</title>
+    <link rel="stylesheet" href="estilos/styleIndex.css">
+</head>
+
+<body>
+    <nav class="container">
+        <div class="navbar">
+            <a href="index.html">
+                <img src="img/logo.png" class="logo">
+            </a>
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="trabalho.html">ARTISTAS</a></li>
+                <li><a href="playlist.html">PLAYLIST</a></li>
+                <li><a href="sobre.html">SOBRE MIM</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="bouncing-blobs-container">
+            <div class="bouncing-blobs-glass"></div>
+            <div class="bouncing-blobs">
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--white"></div>
+                <div class="bouncing-blob bouncing-blob--purple"></div>
+                <div class="bouncing-blob bouncing-blob--purple"></div>
+                <div class="bouncing-blob bouncing-blob--pink"></div>
+            </div>
+        </div>
+        <div class="hero">
+            <h2>Bem vindo ao BeretaBeat</h2>
+            <p>Explore o melhor da musica</p>
+            <div class="tutorial-link"></div>
+        </div>
+        <div class="right-col">
+            <p>Clique para ouvir</p>
+            <img src="img/play1.png" id="icon">
+        </div>
+        <!-- Texto explicativo -->
+        <div class="description">
+            <h2>Sobre o Blog</h2>
+            <p>O BeretaBeat é seu destino definitivo para descobrir as melhores músicas e artistas emergentes. Nossa missão é trazer a você uma curadoria de qualidade, destacando os talentos mais promissores e as músicas mais envolventes. Explore nossas playlists e fique por dentro das últimas novidades do mundo da música.</p>
+        </div>
+        <!-- Conteúdos de destaque -->
+        <div class="featured-content">
+            <h2>Conteúdos de Destaque</h2>
+            <div class="content-item">
+                <a href="trabalho.html">
+                    <img src="img/cantor.png" alt="Artistas">
+                    <p>Conheça os Artistas</p>
+                </a>
+            </div>
+            <div class="content-item">
+                <a href="playlist.html">
+                    <img src="img/playlist.png" alt="Playlist">
+                    <p>Nossas Playlists</p>
+                </a>
+            </div>
+            <div class="content-item">
+                <a href="sobre.html">
+                    <img src="img/perfil.png" alt="Sobre Mim">
+                    <p>Sobre Mim</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <audio id="mySong">
+        <source src="img/I follow rivers.mp3" type="audio/mp3">
+    </audio>
+    <footer>
+        <p>&copy; 2024 Meu blog. Todos os direitos reservados.<br> Desenvolvido por Débora Bereta</p>
+    </footer>
+    <script>
+        var mySong = document.getElementById("mySong");
+        var icon = document.getElementById("icon");
+
+        icon.onclick = function () {
+            if (mySong.paused) {
+                mySong.play();
+                icon.src = "img/pause1.png";
+            } else {
+                mySong.pause();
+                icon.src = "img/play1.png";
+            }
+        }
+
+        // script do fundo colorido
+        const MIN_SPEED = 1.5
+        const MAX_SPEED = 2.5
+
+        function randomNumber(min, max) {
+            return Math.random() * (max - min) + min
+        }
+
+        class Blob {
+            constructor(el) {
+                this.el = el
+                const boundingRect = this.el.getBoundingClientRect()
+                this.size = boundingRect.width
+                this.initialX = randomNumber(0, window.innerWidth - this.size)
+                this.initialY = randomNumber(0, window.innerHeight - this.size)
+                this.el.style.top = `${this.initialY}px`
+                this.el.style.left = `${this.initialX}px`
+                this.vx =
+                    randomNumber(MIN_SPEED, MAX_SPEED) * (Math.random() > 0.5 ? 1 : -1)
+                this.vy =
+                    randomNumber(MIN_SPEED, MAX_SPEED) * (Math.random() > 0.5 ? 1 : -1)
+                this.x = this.initialX
+                this.y = this.initialY
+            }
+
+            update() {
+                this.x += this.vx
+                this.y += this.vy
+                if (this.x >= window.innerWidth - this.size) {
+                    this.x = window.innerWidth - this.size
+                    this.vx *= -1
+                }
+                if (this.y >= window.innerHeight - this.size) {
+                    this.y = window.innerHeight - this.size
+                    this.vy *= -1
+                }
+                if (this.x <= 0) {
+                    this.x = 0
+                    this.vx *= -1
+                }
+                if (this.y <= 0) {
+                    this.y = 0
+                    this.vy *= -1
+                }
+            }
+
+            move() {
+                this.el.style.transform = `translate(${this.x - this.initialX}px, ${this.y - this.initialY}px)`
+            }
+        }
+
+        function initBlobs() {
+            const blobEls = document.querySelectorAll('.bouncing-blob')
+            const blobs = Array.from(blobEls).map((blobEl) => new Blob(blobEl))
+
+            function update() {
+                requestAnimationFrame(update)
+                blobs.forEach((blob) => {
+                    blob.update()
+                    blob.move()
+                })
+            }
+
+            requestAnimationFrame(update)
+        }
+
+        initBlobs()
+    </script>
+</body>
+
+</html>

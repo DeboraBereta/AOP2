@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/stylePlaylist.css">
+    <title>Reprodutor de Música</title>
+    
+</head>
+<body>
+
+    <nav class="container">
+        <div class="navbar">
+            <a href="index.html">
+                <img src="img/logo.png" class="logo">
+            </a>
+            <ul>
+                <li><a href="index.html">INICIO</a></li>
+                <li><a href="trabalho.html">ARTISTAS</a></li>
+                <li><a href="playlist.html">PLAYLIST</a></li>
+                <li><a href="sobre.html">SOBRE MIM</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="bouncing-blobs-container">
+            <div class="bouncing-blobs-glass"></div>
+            <div class="bouncing-blobs">
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--red"></div>
+                <div class="bouncing-blob bouncing-blob--white"></div>
+                <div class="bouncing-blob bouncing-blob--purple"></div>
+                <div class="bouncing-blob bouncing-blob--purple"></div>
+                <div class="bouncing-blob bouncing-blob--pink"></div>
+            </div>
+        </div>
+    </div>    
+
+    <section class="grid-container">
+        <article class="card" id="list" onclick="openModal('Dua Lipa', [
+            { name: 'Dance The Night', url: 'Musicas/Dua lipa/Dance The Night - Dua lipa.mp3', image: 'img/dua1.png' },
+            { name: 'Dont Start Now - Dua lipa', url: 'Musicas/Dua lipa/Dont Start Now - Dua lipa.mp3', image: 'img/Dua2.png' },
+            { name: 'Levitating Featuring DaBaby', url: 'Musicas/Dua lipa/Dua Lipa Levitating Featuring DaBaby.mp3', image: 'img/dua3.jpg' },
+            { name: 'Dua Lipa - New Rules', url: 'Musicas/Dua lipa/Dua Lipa - New Rules.mp3', image: 'img/dua4.png' }
+            ])">
+            <h2>Clique aqui para ver as músicas de Dua Lipa</h2>
+        </article>
+
+        <article class="card" onclick="openModal('Beyoncé', [
+            { name: 'Countdown', url: 'Musicas/Beyoncé/Countdown-Beyoncé.mp3', image: 'img/beyonce1.png' },
+            { name: 'Crayze in love ', url: 'Musicas/Beyoncé/Crayze-in-love-Beyoncé.mp3', image: 'img/beyonce2.png' },
+            { name: 'Diva ', url: 'Musicas/Beyoncé/Diva-Beyoncé.mp3', image: 'img/beyonce3.png' }
+        ])">
+            <h2>Clique aqui para ver as músicas de Beyoncé</h2>
+        </article>
+
+        <article class="card" onclick="openModal('Bruno Mars', [
+            { name: '24K Magic', url: 'Musicas/Bruno Mars/24K-Magic-Bruno-Mars.mp3', image: 'img/Bruno Mars1.jpg' },
+            { name: 'Just The whay you are', url: 'Musicas/Bruno Mars/Just-The-whay-you-are-Bruno-mars.mp3', image: 'img/Bruno Mars2.jpg' },
+            { name: 'Uptown Funk', url: 'Musicas/Bruno Mars/Uptown-Funk-Bruno-Mars.mp3', image: 'img/Bruno Mars3.jpg' },
+            { name: 'Thats What I like', url: 'Musicas/Bruno Mars/That_s-What-I-like-Bruno-mars.mp3', image: 'img/Bruno Mars4.jpg' }
+        ])">
+            <h2>Clique aqui para ver as músicas de Bruno Mars</h2>
+        </article>
+        <article class="card" onclick="openModal('Justin Bieber', [
+            { name: 'Come Aroud Me', url: 'Musicas/Justin Bieber/Come-Aroud-Me-Justin-Bieber.mp3', image: 'img/Justin Bieber1.png' },
+           
+        ])">
+            <h2>Clique aqui para ver as músicas de Justin Bieber</h2>
+        </article>
+        <article class="card" onclick="openModal('Billie Eilish', [
+            { name: 'CHIHIRO', url: 'Musicas/Billie Eilish/CHIHIRO-Billie-Eilish.mp3', image: 'img/BillieEilish1.png' },
+           
+        ])">
+            <h2>Clique aqui para ver as músicas de Billie Eilish</h2>
+        </article>
+        <article class="card" onclick="openModal('Drake', [
+            { name: 'From Florida', url: 'Musicas/Drake/From-Florida-Drake.mp3', image: 'img/Drake1.png' },
+            { name: 'Gods plan ', url: 'Musicas/Drake/Gods-plan-Drake.mp3', image: 'img/Drake2.png' }
+        ])">
+            <h2>Clique aqui para ver as músicas de Drake</h2>
+        </article>
+        <article class="card" onclick="openModal('Cardi B', [
+            { name: 'Please Me - Cardi B e Bruno mars', url: 'Musicas/Cardi B/Please Me - Cardi B e Bruno mars.mp3', image: 'img/Cardi B e Bruno Mars.png' },
+           
+        ])">
+            <h2>Clique aqui para ver as músicas de Cardi B</h2>
+        </article>
+        <article class="card" onclick="openModal('Lacrea', [
+            { name: 'Good Lord', url: 'Musicas/Lacrea/.mp3', image: 'img/Lacrea1.jpg' },
+           
+        ])">
+            <h2>Clique aqui para ver as músicas de Lacrea</h2>
+        </article>
+
+
+        <!-- Adicione mais artistas e suas músicas conforme necessário -->
+    </section>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="musicList" class="music-grid"></div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Meu blog. Todos os direitos reservados.<br> Desenvolvido por Débora Bereta</p>
+    </footer>
+    <script>
+         /*-------------- EFEITO DO FUNDO ------------------------*/
+        const MIN_SPEED = 1.5;
+        const MAX_SPEED = 2.5;
+
+        function randomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        class Blob {
+            constructor(el) {
+                this.el = el;
+                const boundingRect = this.el.getBoundingClientRect();
+                this.size = boundingRect.width;
+                this.initialX = randomNumber(0, window.innerWidth - this.size);
+                this.initialY = randomNumber(0, window.innerHeight - this.size);
+                this.el.style.top = `${this.initialY}px`;
+                this.el.style.left = `${this.initialX}px`;
+                this.vx = randomNumber(MIN_SPEED, MAX_SPEED) * (Math.random() > 0.5 ? 1 : -1);
+                this.vy = randomNumber(MIN_SPEED, MAX_SPEED) * (Math.random() > 0.5 ? 1 : -1);
+                this.x = this.initialX;
+                this.y = this.initialY;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x >= window.innerWidth - this.size) {
+                    this.x = window.innerWidth - this.size;
+                    this.vx *= -1;
+                }
+                if (this.y >= window.innerHeight - this.size) {
+                    this.y = window.innerHeight - this.size;
+                    this.vy *= -1;
+                }
+                if (this.x <= 0) {
+                    this.x = 0;
+                    this.vx *= -1;
+                }
+                if (this.y <= 0) {
+                    this.y = 0;
+                    this.vy *= -1;
+                }
+            }
+
+            move() {
+                this.el.style.transform = `translate(${this.x - this.initialX}px, ${this.y - this.initialY}px)`;
+            }
+        }
+
+        function initBlobs() {
+            const blobEls = document.querySelectorAll('.bouncing-blob');
+            const blobs = Array.from(blobEls).map((blobEl) => new Blob(blobEl));
+
+            function update() {
+                requestAnimationFrame(update);
+                blobs.forEach((blob) => {
+                    blob.update();
+                    blob.move();
+                });
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        initBlobs();
+
+        //--------------- MODAL MUSICA ----------------//
+        var currentPlayingAudio = null; // Variável global para armazenar o elemento de áudio em reprodução atualmente
+
+function openModal(artist, songs) {
+    var modal = document.getElementById("myModal");
+    var musicListDiv = document.getElementById("musicList");
+
+    modal.style.display = "block";
+    musicListDiv.innerHTML = ""; // Limpa a lista de músicas antes de adicionar novas
+
+    songs.forEach(function(song) {
+        var musicItem = document.createElement("div");
+        musicItem.classList.add("music-item");
+
+        var imageContainer = document.createElement("div"); // Container para a imagem
+        imageContainer.classList.add("image-container");
+
+        var image = document.createElement("img");
+        image.src = song.image;
+        image.alt = "Imagem do Artista";
+
+        imageContainer.appendChild(image); // Adiciona a imagem ao contêiner
+        musicItem.appendChild(imageContainer); // Adiciona o contêiner ao item de música
+
+        var musicInfo = document.createElement("div"); // Container para a info da música
+        musicInfo.innerHTML = `
+            <h2>${song.name}</h2>
+            <audio controls class="audio">
+                <source src="${song.url}" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+        `;
+
+        musicItem.appendChild(musicInfo); // Adiciona as informações da música ao item de música
+        musicListDiv.appendChild(musicItem);
+
+        var audioElement = musicInfo.querySelector("audio");
+
+        // Adiciona evento de clique para iniciar a música e parar a que está sendo reproduzida
+        audioElement.addEventListener("play", function() {
+            if (currentPlayingAudio && currentPlayingAudio !== audioElement) {
+                currentPlayingAudio.pause(); // Pausa a música em reprodução atualmente
+            }
+            currentPlayingAudio = audioElement; // Define a nova música como a reprodução atual
+        });
+    });
+}
+
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    var audioElements = document.querySelectorAll(".audio");
+
+    // Pausa todos os elementos de áudio
+    audioElements.forEach(function(audio) {
+        audio.pause();
+    });
+
+    modal.style.display = "none";
+}
+
+
+    </script>
+
+</body>
+</html>

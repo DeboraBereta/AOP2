@@ -1,0 +1,148 @@
+ * {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.about2, .about {
+  width: 100%;
+  padding: 100px 0px;
+  background-color: #191919;
+}
+.about {
+  width: 100%;
+  padding: 100px 0px;
+  background-color: #000000;
+}
+
+.about img {
+  height: auto;
+  width: 100%;
+}
+.about2 img, .about img{
+  width: 450px;
+  margin: 0px 50px 0px 50px;
+}
+
+.about2 .main {
+  flex-direction: row-reverse;
+}
+.about-text {
+  width: 550px;
+}
+
+.main {
+  width: 1130px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-text h2 {
+  color: white;
+  font-size: 75px;
+  text-transform: capitalize;
+  margin-bottom: 50px;
+}
+
+.about-text h5 {
+  color: white;
+  letter-spacing: 2px;
+  font-size: 22px;
+  margin-bottom: 25px;
+  text-transform: capitalize;
+}
+
+.about-text p {
+  color: #fcfc;
+  letter-spacing: 1px;
+  line-height: 28px;
+  font-size: 18px;
+  margin-bottom: 45px;
+}
+
+button {
+  background-color: #f9004d;
+  color: white;
+  text-decoration: none;
+  border: 2px solid transparent;
+  font-weight: bold;
+  padding: 13px 30px;
+  border-radius: 30px;
+  transition: .4s;
+}
+
+button:hover {
+  background-color: transparent;
+  border: 2px solid #f9004d;
+  cursor: pointer;
+}
+
+
+/*MENU*/
+.container {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.navbar {
+  width: 100%;
+  margin: auto;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+}
+
+.logo {
+  width: 100px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.navbar ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 15px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.navbar {
+  width: 100%;
+  margin: auto;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999; /* Para garantir que o menu esteja acima de outros elementos */
+}
+
+ /*Rodapé*/
+ footer {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    position: relative;
+  }
+}
